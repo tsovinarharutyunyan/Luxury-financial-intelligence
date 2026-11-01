@@ -1,0 +1,8 @@
+company,year,revenue_eur_m,recurring_operating_income_eur_m,gross_profit_eur_m,net_income_eur_m,basis_note,source_url,recurring_operating_margin_pct,gross_margin_pct,reported_revenue_yoy_pct
+Hermes,2024,15170,6150,10660,,2025 comparative,https://assets-finance.hermes.com/s3fs-public/node/pdf_file/2026-02/1770842738/hermes_20260212_pr_2025fullyearresults_va.pdf,40.54054054054054,70.27027027027027,
+Hermes,2025,16002,6569,11379,,2025 full year,https://assets-finance.hermes.com/s3fs-public/node/pdf_file/2026-02/1770842738/hermes_20260212_pr_2025fullyearresults_va.pdf,41.05111861017373,71.10986126734159,5.484508899143048
+Kering,2024,16874,2440,12394,1133.0,2025 comparative; continuing operations restated,https://www.kering.com/api/download-file/?path=Kering_2025_results_Presentation_c0c09be700.pdf,14.46011615503141,73.4502785350243,
+Kering,2025,14675,1631,10660,72.0,2025 full year; continuing operations excluding Kering Beaute,https://www.kering.com/api/download-file/?path=Kering_2025_results_Presentation_c0c09be700.pdf,11.114139693356048,72.6405451448041,-13.031883370866426
+LVMH,2023,86153,22802,59277,15952.0,key figures,https://www.lvmh.com/investors/key-figures,26.46686708530173,68.80433647116178,
+LVMH,2024,84683,19571,56765,12958.0,key figures,https://www.lvmh.com/investors/key-figures,23.110895929525405,67.0323441540805,-1.7062667579770818
+LVMH,2025,80807,17755,53528,11222.0,key figures,https://www.lvmh.com/investors/key-figures,21.972106376922792,66.24178598388754,-4.577069777877496
