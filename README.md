@@ -1,47 +1,57 @@
-# The Economics of Luxury | Financial Intelligence
+# Luxury Financial Intelligence
 
-**A financial and strategy case study of Hermès, LVMH and Kering (FY2023–FY2025, coverage varies).**
+**Financial performance analysis | Python · pandas · SQL (SQLite) · Tableau**
 
-## Investment-committee questions
-- Which luxury group has the strongest operating profitability?
-- How much of the 2024–2025 operating profit change can be mechanically decomposed into revenue and margin effects?
-- Where is LVMH profit concentrated by segment?
-- How sensitive are profits to revenue and margin scenarios?
+An analysis of **Hermès, LVMH and Kering** using reported FY2024 and FY2025 financial figures. The project compares revenue growth, recurring operating profit, gross and recurring operating margins, and the share of revenue represented by cost of goods sold (COGS). It also tests simple hypothetical revenue-and-margin scenarios.
 
-## Key findings
-- FY2025 recurring operating margins: **Hermès 41.05%, LVMH 21.97%, Kering 11.11%**.
-- **Revenue size is not profitability:** LVMH generates the largest absolute sales, while Hermès has the highest recurring operating margin.
-- **Kering 2024 figures are restated** in the FY2025 comparative after the classification of Kering Beauté as discontinued operations; older published FY2024 totals are not directly comparable.
-- **Pricing vs volume cannot be separately identified** from group-level revenue and margin figures. The operating-profit bridge is a transparent accounting identity, not proof of pricing power.
+## Questions explored
 
-## Project architecture
-- `Luxury_Financial_Intelligence.ipynb` — reproducible Python notebook for validation, benchmarking, profit bridges, segment analysis, and scenarios.
-- `analysis.sql` — SQL queries; `luxury_financial_intelligence.sqlite` — SQLite database.
-- `*.csv` — financial source and analysis tables (stored in the repository root).
-- `*.png` — three Python-generated financial visualizations (stored in the repository root).
-- `Luxury_Financial_Intelligence.twbx` — packaged Tableau workbook.
-- `QA_REPORT.md` — validation checks and remaining limitations.
-- `sources_and_methodology.md` — financial sources, definitions, and comparability notes.
-- `investment_committee_memo.md` — executive summary and decision implications.
+- Which companies increased or decreased revenue between 2024 and 2025?
+- Did recurring operating profit change faster than revenue?
+- How did recurring operating margins and COGS shares change?
+- How would operating profit change under illustrative revenue and margin assumptions?
 
-## Interactive Tableau dashboard
-[Explore the Luxury Financial Intelligence dashboard on Tableau Public](https://public.tableau.com/app/profile/tsovinar.harutyunyan/viz/Luxury_Financial_Intelligence/01ExecutiveOverview)
+## Selected findings
 
-Includes the executive financial benchmark and a Hermès operating-profit scenario sensitivity view. Scenarios are illustrative, not forecasts.
+| Company | FY2025 revenue (€m) | Revenue growth | FY2025 recurring operating margin | Recurring operating profit growth |
+|---|---:|---:|---:|---:|
+| Hermès | 16,002 | +5.48% | 41.05% | +6.81% |
+| LVMH | 80,807 | −4.58% | 21.97% | −9.28% |
+| Kering | 14,675 | −13.03% | 11.11% | −33.16% |
 
-## Run
-Install `pip install -r requirements.txt`, then open and **Run All** in Jupyter from this folder. Tableau Public for Mac can load the CSV files. The completed Tableau packaged workbook is included at `Luxury_Financial_Intelligence.twbx`. Open it in Tableau Desktop/Public; Tableau Public publishing is a separate manual step.
+Hermès was the only company in this sample with positive reported revenue growth. LVMH remained the largest by revenue, but its recurring operating profit fell faster than revenue. Kering recorded the largest revenue decline and operating-margin deterioration of the three. These comparisons are descriptive, not evidence of the causes of the changes.
 
-## Analytical limitations
-This is an intentionally small, verified company-year financial panel, not a large dataset or a statistically powered regression study. LVMH covers 2023–2025; Hermès and Kering cover 2024–2025. All monetary amounts are € million unless stated. The scenario matrix is illustrative and does not predict future results.
+## Methods
 
+1. Load the prepared company financial data and check missing values and duplicate company-year records.
+2. Calculate 2024–2025 revenue and recurring operating profit growth.
+3. Calculate gross margin, recurring operating margin and COGS share.
+4. Cross-check revenue growth using a SQLite self-join.
+5. Export three small datasets for Tableau.
+6. Calculate **27 illustrative scenarios**: three companies × three revenue assumptions (−5%, 0%, +5%) × three operating-margin changes (−2, 0, +2 percentage points).
 
-## Tableau dashboards
-- `01 Executive Overview`: FY2025 revenue, recurring operating margin, and reported year-over-year revenue growth.
-- `02 Scenario Intelligence`: Hermès sensitivity matrix (five revenue assumptions × three margin assumptions); assumptions are illustrative, not forecasts.
+The scenarios are **not forecasts**. Their outputs are based on hypothetical changes to each company's FY2025 revenue and recurring operating margin.
 
-## Reproducibility and QA
-The notebook was executed successfully from the repository root. CSV margin calculations, profit bridge reconciliation, scenario baselines, and SQLite row counts were checked independently. See `QA_REPORT.md`.
+## Files
 
-## Publication
-The Tableau workbook is also published on Tableau Public at the link above. Public Tableau workbooks expose underlying included data, which here are publicly sourced company figures.
+| File | Purpose |
+|---|---|
+| `Luxury_Financial_Intelligence.ipynb` | Main Python and SQL analysis |
+| `luxury_company_financials.csv` | Prepared financial figures, reporting basis and source links |
+| `tableau_company_2025.csv` | Company-level 2025 KPIs |
+| `tableau_growth_comparison.csv` | 2024–2025 growth and margin comparisons |
+| `tableau_scenarios.csv` | 27 illustrative scenario results |
+
+**Tableau status:** The existing Tableau Public workbook is still under final review. The Tableau workbook is being finalized separately and is not included in this repository update. Its embedded extracts and scenario data source must be reconciled with the Python exports before publication.
+
+## How to run
+
+Place `Luxury_Financial_Intelligence.ipynb` and `luxury_company_financials.csv` in the same folder. Open the notebook in Jupyter and run all cells from top to bottom. Required packages: `pandas`, `matplotlib`, `ipykernel`; `sqlite3` is included with Python. The notebook writes the three `tableau_*.csv` exports to the working folder.
+
+## Sources and limitations
+
+- [Hermès — FY2025 full-year results](https://assets-finance.hermes.com/s3fs-public/node/pdf_file/2026-02/1770842738/hermes_20260212_pr_2025fullyearresults_va.pdf)
+- [LVMH — official key figures](https://www.lvmh.com/en/investors/key-figures)
+- [Kering — official finance website](https://www.kering.com/en/finance/about-kering/)
+
+All amounts are in **EUR millions**. Kering's FY2024 figures are the comparative figures used in its FY2025 reporting. Reported revenue changes are **not** organic or constant-currency growth. The companies have different business mixes and reporting definitions. COGS is calculated as revenue less gross profit; it does not capture every operating cost. This is a small, descriptive comparison of three companies, not an industry-wide or investment analysis.
