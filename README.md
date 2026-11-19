@@ -42,7 +42,11 @@ The scenarios are **not forecasts**. Their outputs are based on hypothetical cha
 | `tableau_growth_comparison.csv` | 2024–2025 growth and margin comparisons |
 | `tableau_scenarios.csv` | 27 illustrative scenario results |
 
-**Tableau status:** The existing Tableau Public workbook is still under final review. The Tableau workbook is being finalized separately and is not included in this repository update. Its embedded extracts and scenario data source must be reconciled with the Python exports before publication.
+## Interactive Tableau dashboards
+
+[**View the published Luxury Financial Intelligence dashboards on Tableau Public**](https://public.tableau.com/app/profile/tsovinar.harutyunyan/viz/Luxury_Financial_Intelligence_dasheboard/01FinancialProfitabilityOverview)
+
+The published workbook contains two dashboards: **01 Financial & Profitability Overview** (revenue, margins, operating profit, and revenue growth) and **02 Scenario Analysis** (Hermès, Kering, and LVMH scenario sensitivity matrices). The scenario assumptions are illustrative, not forecasts. The packaged Tableau workbook (`.twbx`) is maintained separately and is not yet included in this repository.
 
 ## How to run
 
